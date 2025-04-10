@@ -16,6 +16,7 @@ A VBA macro for Microsoft Outlook that helps with email drafting, translation, r
 
 1. **Enable Developer Mode in Outlook**:
    - File → Options → Customize Ribbon → Check "Developer" tab
+   - Tools → References → Check "Microsoft ScriptControl 1.0", "Microsoft Scripting Runtime", "Microsoft Word Object Library" 
 
 2. **Add VBA Code**:
    - Open VBA Editor (Alt+F11)
