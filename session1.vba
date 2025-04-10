@@ -14,12 +14,20 @@ Function getSelectedText()
         MsgBox "No text selected.", vbExclamation
         Exit Function
 
-
     End If
     
     ' Return the text within the range
-    getSelectedText = Replace(Left(objSelection.Text, Len(objSelection.Text) - 1), Chr(34), "`")
+    getSelectedText = RemoveNonPrintableCharsRegex(Replace(Left(objSelection.Text, Len(objSelection.Text) - 1), Chr(34), "`"))
+    
 
+End Function
+Function RemoveNonPrintableCharsRegex(inputStr As String) As String
+    Dim regex As Object
+    Set regex = CreateObject("VBScript.RegExp")
+    
+    regex.Pattern = "[^\x20-\x7E]"  ' Match anything NOT in ASCII 32 (space) to 126 (~)
+    regex.Global = True
+    RemoveNonPrintableCharsRegex = regex.Replace(inputStr, "")
 End Function
 Sub get_email(string_var)
     ' Check if the OPENAI_API_KEY environment variable is set, and display an error message and exit the subroutine if it is not set
